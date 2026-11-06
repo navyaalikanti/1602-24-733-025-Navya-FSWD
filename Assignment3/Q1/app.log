@@ -1,0 +1,9 @@
+[2026-11-06T08:39:54.766Z] INFO: Request received: GET /
+[2026-11-06T08:39:54.800Z] INFO: Request received: GET /favicon.ico
+[2026-11-06T08:40:03.859Z] INFO: Request received: GET /students
+[2026-11-06T08:40:03.888Z] INFO: Request received: GET /favicon.ico
+[2026-11-06T08:40:16.415Z] INFO: Request received: GET /studentsdata
+[2026-11-06T08:40:16.447Z] INFO: Request received: GET /favicon.ico
+[2026-11-06T08:40:54.859Z] ERROR: Test error message
+[2026-11-06T08:41:05.015Z] INFO: Request received: GET /
+[2026-11-06T08:41:05.047Z] INFO: Request received: GET /favicon.ico

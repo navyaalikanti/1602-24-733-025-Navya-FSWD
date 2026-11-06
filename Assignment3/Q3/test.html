@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Microservices Testing</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 30px;
+            background: #f4f4f4;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        pre {
+            background: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Microservices API Testing</h2>
+
+    <input
+        type="text"
+        id="token"
+        placeholder="Paste JWT Token Here"
+    >
+
+    <br>
+
+    <button onclick="getStudents()">
+        Get Students
+    </button>
+
+    <button onclick="getCourses()">
+        Get Courses
+    </button>
+
+    <button onclick="testInvalid()">
+        Test Invalid Token
+    </button>
+
+    <button onclick="testMissing()">
+        Test Missing Token
+    </button>
+
+    <h3>API Response:</h3>
+
+    <pre id="output">Results will appear here.</pre>
+
+    <script>
+
+        async function sendRequest(url, token) {
+            try {
+                const response = await fetch(url, {
+                    headers: {
+                        Authorization: 'Bearer ' + token
+                    }
+                });
+
+                const data = await response.json();
+
+                document.getElementById('output').textContent =
+                    'Status: ' + response.status + '\n\n' +
+                    JSON.stringify(data, null, 2);
+
+            } catch (err) {
+                document.getElementById('output').textContent =
+                    'Error: ' + err.message;
+            }
+        }
+
+        function getStudents() {
+            const token = document.getElementById('token').value;
+
+            sendRequest(
+                'http://localhost:3000/students',
+                token
+            );
+        }
+
+        function getCourses() {
+            const token = document.getElementById('token').value;
+
+            sendRequest(
+                'http://localhost:3000/courses',
+                token
+            );
+        }
+
+        function testInvalid() {
+            sendRequest(
+                'http://localhost:3000/students',
+                'invalidtoken'
+            );
+        }
+
+        function testMissing() {
+            sendRequest(
+                'http://localhost:3000/students',
+                ''
+            );
+        }
+
+    </script>
+
+</body>
+</html>
