@@ -9,4 +9,4 @@ Each service can be scaled independently based on its requirements. If one servi
 
 ## Architecture Diagram
 
-![Microservices Architecture](Assignment3/Q3/architecture-diagram.jpeg)
+![Microservices Architecture](architecture-diagram.jpeg)
